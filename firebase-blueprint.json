@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "Student": {
+      "title": "Student",
+      "description": "Student credentials and identification",
+      "type": "object",
+      "properties": {
+        "studentKey": { "type": "string" },
+        "grade": { "type": "number" },
+        "classNum": { "type": "number" },
+        "studentNum": { "type": "number" },
+        "name": { "type": "string" },
+        "personalPasswordHash": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["studentKey", "grade", "classNum", "studentNum", "name", "personalPasswordHash"]
+    },
+    "TravelProject": {
+      "title": "TravelProject",
+      "description": "Student travel project data, drafts, AI feedback, and teacher evaluations",
+      "type": "object",
+      "properties": {
+        "studentKey": { "type": "string" },
+        "selectedData": { "type": "object" },
+        "draftKorean": { "type": "object" },
+        "draftEnglish": { "type": "object" },
+        "grammarCheck": { "type": "object" },
+        "aiFeedback": { "type": "object" },
+        "status": { "type": "string", "enum": ["작성중", "제출완료", "교사승인완료"] },
+        "aiAssessmentDraft": { "type": "object" },
+        "teacherAssessment": { "type": "object" },
+        "teacherApproved": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["studentKey", "status", "teacherApproved"]
+    }
+  },
+  "firestore": {
+    "/classes/{classId}/students/{studentKey}": {
+      "schema": "Student",
+      "description": "Stores individual student profile and password hash for authentication"
+    },
+    "/travel_projects/{studentKey}": {
+      "schema": "TravelProject",
+      "description": "Stores student dream trip performance assessment project data"
+    },
+    "/system_config/{configId}": {
+      "schema": "object",
+      "description": "Stores system configuration such as initial teacher admin password hash and shared class password"
+    },
+    "/test/{docId}": {
+      "schema": "object",
+      "description": "Connection test document"
+    }
+  }
+}

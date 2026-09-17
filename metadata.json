@@ -1,0 +1,6 @@
+{
+  "name": "My Dream Trip - 영어 수행평가",
+  "description": "중학교 1학년 영어 수행평가 여행지 소개(My Dream Trip) 웹앱 - 대륙 및 여행지 3단계 탐색, 문장별 영작 및 Gemini AI 실시간 피드백, 교사용 관리자 대시보드 및 평가 승인 시스템",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
